@@ -1,0 +1,50 @@
+.literata-unique {
+  font-family: "Literata", serif;
+  font-optical-sizing: auto;
+  font-weight: 401;
+  font-style: normal;
+}
+
+/* إعدادات الجسم والخلفية */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000; /* سوداء بالكامل */
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-start; /* الكتابة تبدأ من اليسار */
+  align-items: center;
+  padding-left: 50px;
+  color: #ffffff;
+}
+
+/* نص الانترو */
+.intro-container {
+  font-size: 24px;
+  text-align: left;
+  letter-spacing: 1px;
+}
+
+.cursor {
+  display: inline;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Fade overlay */
+.fade-overlay {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:black;
+  opacity:0;
+  transition: opacity 2s ease;
+  z-index:9999;
+}
