@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>zakaria.</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* مؤشر الكتابة */
+    .cursor-blink {
+      display: inline-block;
+      width: 10px;
+      animation: blink 1s step-start infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    /* خلفية المطر */
+    .rain-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .drop {
+      position: absolute;
+      top: -10vh;
+      width: 1px;
+      height: 15px;
+      background: rgba(173, 194, 233, 0.7);
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+      }
+    }
+
+    /* وميض البرق عند الضغط */
+    body.lightning {
+      animation: lightningFlash 0.2s ease-in-out 1;
+    }
+
+    @keyframes lightningFlash {
+      0% { background-color: rgba(255,255,255,0.2); }
+      100% { background-color: transparent; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="rain-container"></div>
+
+  <div class="container">
+    <div class="row">
+
+      <div class="cat-one">
+        <img src="images/cat.gif" alt="Cute Cat" class="cat-gif">
+      </div>
+      <div class="cat-two">
+        <img src="images/cat1.gif" alt="Cute Cat" class="cat-gif">
+      </div>
+      <div class="cat-there">
+        <img src="images/cat3.gif" alt="Cute Cat" class="cat-gif">
+      </div>
+      <div class="cat-four">
+        <img src="images/cat5.gif" alt="Cute Cat" class="cat-gif">
+      </div>
+
+      <div class="form-switch-container">
+        <span class="form-switch-label" id="flickerLabel">click me!</span>
+        <div class="form-switch">
+          <label>
+            <input type="checkbox" id="toggleFlicker" >
+            <i></i>
+          </label>
+        </div>
+      </div>
+
+      <img src="images/logo.png" alt="zakaria Logo" class="logo">
+
+      <div class="text-block">
+        <p>> <span class="text-bold">0</span> &nbsp;: &nbsp; zakaria (<span class="text-bold">zakiudy</span>)</p>
+        <p>>&nbsp; <span class="text-bold">1</span> &nbsp;: &nbsp;<span class="text-bold">graphic designer </span> &nbsp; &gt; &nbsp; senior &nbsp; | &nbsp; photographer </p>
+        <p>> <span class="text-bold">2</span> &nbsp;: &nbsp; Al-Karkh &nbsp; District &nbsp; , &nbsp;  <span class="text-bold">Baghdad Governorate &lt; IQ</span> </p>
+        <p>> <span class="text-bold">3</span> &nbsp;: &nbsp; Follow &nbsp; <a href="https://www.instagram.com/by.v" target="_blank"><span class="text-bold instagram-color">Instagram</span></a> </p>
+        <p>> <span class="text-bold">4</span> &nbsp;: &nbsp; Contact &nbsp; <a href="https://t.me/xleex" target="_blank"><span class="text-bold telegram-color">Telegram</span></a> </p>
+        <p>> <span class="text-bold">5</span> &nbsp;: &nbsp; Contact &nbsp; <a href="https://wa.me/9647831752020" target="_blank"><span class="text-bold whatsapp-color">WhatsApp</span></a> </p>
+        <p> > &nbsp <span class="cursor-blink"> | </span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay"></div>
+
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof displayLanguage === 'function') {
+        displayLanguage('en');
+      }
+
+      const label = document.getElementById('flickerLabel');
+      const originalText = 'دوس هنا!';
+      const alternateTexts = ['click me!', 'Cliquez-moi!', '点击我!'];
+      const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*';
+
+      function randomChar() { return chars[Math.floor(Math.random() * chars.length)]; }
+
+      function hackerEffect(text, duration = 1000) {
+        return new Promise(resolve => {
+          let iterations = 0;
+          const maxIterations = Math.floor(duration / 50);
+          const interval = setInterval(() => {
+            let display = '';
+            for (let i = 0; i < text.length; i++) {
+              display += Math.random() < 0.5 ? text[i] : randomChar();
+            }
+            label.textContent = display;
+            iterations++;
+            if (iterations >= maxIterations) { clearInterval(interval); resolve(); }
+          }, 40);
+        });
+      }
+
+      async function startFlickerCycle() {
+        while (true) {
+          await hackerEffect(originalText, 2000);
+          const alt = alternateTexts[Math.floor(Math.random() * alternateTexts.length)];
+          label.textContent = alt;
+          await new Promise(r => setTimeout(r, 2000));
+          await hackerEffect(originalText, 2000);
+          label.textContent = originalText;
+          await new Promise(r => setTimeout(r, 2000));
+        }
+      }
+
+      startFlickerCycle();
+
+      // -----------------------------
+      // إنشاء المطر
+      const rainContainer = document.querySelector('.rain-container');
+      const dropsCount = 300;
+
+      for (let i = 0; i < dropsCount; i++) {
+        const drop = document.createElement('div');
+        drop.classList.add('drop');
+        drop.style.left = Math.random() * 100 + 'vw';
+        drop.style.animationDuration = (Math.random() * 1.5 + 0.5) + 's';
+        drop.style.animationDelay = Math.random() * 5 + 's';
+        rainContainer.appendChild(drop);
+      }
+
+      // وميض البرق عند الضغط
+      document.body.addEventListener('mousedown', () => {
+        document.body.classList.add('lightning');
+        setTimeout(() => document.body.classList.remove('lightning'), 200);
+      });
+    });
+  </script>
+</body>
+</html>
