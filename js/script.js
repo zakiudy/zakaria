@@ -2,7 +2,9 @@
 // تشغيل/إطفاء flicker overlay
 // -----------------------------
 const toggle = document.getElementById('toggleFlicker');
-const overlay = document.querySelector('.overlay');
+toggle.addEventListener('change', () => {
+  document.body.classList.toggle('flicker-active', toggle.checked);
+});
 
 toggle.addEventListener('change', () => {
   overlay.style.display = toggle.checked ? 'block' : 'none';
@@ -51,4 +53,37 @@ document.querySelectorAll('img').forEach(img => {
 // مثال: استخدام data-src للصور وتحميلها عبر JS
 document.querySelectorAll('img[data-src]').forEach(img => {
   img.src = img.getAttribute('data-src');
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const rainContainer = document.createElement('div');
+  rainContainer.classList.add('rain-container');
+  document.body.appendChild(rainContainer);
+
+  const dropsCount = 300;
+
+  for (let i = 0; i < dropsCount; i++) {
+    const drop = document.createElement('div');
+    drop.classList.add('drop');
+
+    // موضع أفقي عشوائي
+    drop.style.left = Math.random() * 100 + 'vw';
+
+    // مدة وسرعة السقوط عشوائية
+    const duration = Math.random() * 1.5 + 0.5; // من 0.5s إلى 2s
+    drop.style.animationDuration = duration + 's';
+
+    // تأخير عشوائي للسقوط
+    drop.style.animationDelay = Math.random() * 5 + 's';
+
+    rainContainer.appendChild(drop);
+  }
+
+  // تأثير البرق عند الضغط على الصفحة
+  document.body.addEventListener('mousedown', () => {
+    document.body.classList.add('lightning');
+    setTimeout(() => {
+      document.body.classList.remove('lightning');
+    }, 200);
+  });
 });
