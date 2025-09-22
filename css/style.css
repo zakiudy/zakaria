@@ -190,15 +190,58 @@ body, p, span { user-select: none; -webkit-user-select:none; -moz-user-select:no
 
 /* ========================== */
 /* القطط */
-.cat-one .cat-gif { position:absolute; top:-80px; left:90%; transform:translateX(-50%); width:120px; animation: cat-one-move 4s ease-in-out infinite; pointer-events:none; mix-blend-mode:difference; }
-.cat-two .cat-gif { position:absolute; top:-70px; left:15%; transform:translateX(-50%); width:70px; animation: cat-two-move 4s ease-in-out infinite; pointer-events:none; }
-.cat-there .cat-gif { position:absolute; top:70px; left:-10%; transform:translateX(-50%); width:70px; animation: cat-there-move 4s ease-in-out infinite; pointer-events:none; }
-.cat-four .cat-gif { position:absolute; top:160px; left:80%; transform:translateX(-50%); width:70px; animation: cat-four-move 4s ease-in-out infinite; pointer-events:none; }
+.cat-one .cat-gif 
+{ position:absolute; 
+  top:-80px; 
+  left:85%; 
+  transform:translateX(-50%); 
+  width:100px; 
+  animation: cat-one-move 4s ease-in-out infinite; 
+  pointer-events:none; mix-blend-mode:difference; 
+}
+.cat-two .cat-gif 
+{ position:absolute; 
+  top:-70px; left:15%; 
+  transform:translateX(-50%); width:70px; 
+  animation: cat-two-move 4s ease-in-out infinite; 
+  pointer-events:none; 
+}
+.cat-there .cat-gif 
+{ position:absolute; 
+  top:70px; left:-0%; 
+  transform:translateX(-50%); 
+  width:70px; 
+  animation: cat-there-move 4s ease-in-out infinite; 
+  pointer-events:none; 
+}
+.cat-four .cat-gif 
+{ position:absolute; 
+  top:160px; left:60%; 
+  transform:translateX(-50%); 
+  width:70px;
+   animation: cat-four-move 4s ease-in-out infinite;
+    pointer-events:none; 
+}
 
-@keyframes cat-one-move {0%,100%{transform:translateX(-50%) translateY(0px) rotate(0deg);} 25%{transform:translateX(-50%) translateY(-10px) rotate(-5deg);} 50%{transform:translateX(-50%) translateY(0px) rotate(5deg);} 75%{transform:translateX(-50%) translateY(-5px) rotate(-2deg);}}
-@keyframes cat-two-move {0%,100%{transform:translateX(-50%) translateY(0px) rotate(0deg);} 25%{transform:translateX(-50%) translateY(-8px) rotate(-3deg);} 50%{transform:translateX(-50%) translateY(0px) rotate(3deg);} 75%{transform:translateX(-50%) translateY(-4px) rotate(-2deg);}}
-@keyframes cat-there-move {0%,100%{transform:translateX(40%) translateY(0px) rotate(0deg);}25%{transform:translateX(10%) translateY(-8px) rotate(-3deg);}50%{transform:translateX(-50%) translateY(20px) rotate(8deg);}}
-@keyframes cat-four-move {0%,100%{transform:translateX(40%) translateY(0px) rotate(0deg);}25%{transform:translateX(50%) translateY(-90px) rotate(20deg);}50%{transform:translateX(90%) translateY(90px) rotate(7deg);}75%{transform:translateX(100%) translateY(-9px) rotate(-2deg);}}
+@keyframes cat-one-move 
+{0%,100%{transform:translateX(-50%) translateY(0px) rotate(0deg);} 
+25%{transform:translateX(-50%) translateY(-10px) rotate(-5deg);} 
+50%{transform:translateX(-50%) translateY(0px) rotate(5deg);} 
+75%{transform:translateX(-50%) translateY(-5px) rotate(-2deg);}}
+@keyframes cat-two-move 
+{0%,100%{transform:translateX(-50%) translateY(0px) rotate(0deg);}
+25%{transform:translateX(-50%) translateY(-8px) rotate(-3deg);} 
+50%{transform:translateX(-50%) translateY(0px) rotate(3deg);} 
+75%{transform:translateX(-50%) translateY(-4px) rotate(-2deg);}}
+@keyframes cat-there-move 
+{0%,100%{transform:translateX(40%) translateY(0px) rotate(0deg);}
+25%{transform:translateX(10%) translateY(-8px) rotate(-3deg);}
+50%{transform:translateX(-10%) translateY(20px) rotate(8deg);}}
+@keyframes cat-four-move 
+{0%,100%{transform:translateX(40%) translateY(0px) rotate(0deg);}
+25%{transform:translateX(50%) translateY(-90px) rotate(20deg);}
+50%{transform:translateX(90%) translateY(20px) rotate(7deg);}
+75%{transform:translateX(100%) translateY(-9px) rotate(-2deg);}}
 
 .form-switch-container { position:absolute; top:-80px; left:50%; transform:translateX(-50%); text-align:center; }
 .form-switch-label { font-weight:900; font-size:22px; color:#dad5d5; margin-bottom:8px; display:block; letter-spacing:1px; -webkit-text-stroke:0.3px #111010; animation: neonPulse 2s infinite alternate; }
